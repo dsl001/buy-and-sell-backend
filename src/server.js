@@ -1,6 +1,16 @@
 import Hapi from "@hapi/hapi";
+import * as admin from "firebase-admin";
 import routes from "./routes";
 import { db } from "./database";
+import fs from "fs";
+import path from "path";
+
+const credentialsPath = path.resolve("credentials.json");
+const credentials = JSON.parse(fs.readFileSync(credentialsPath, "utf8"));
+
+admin.initializeApp({
+  credential: admin.credential.cert(credentials),
+});
 
 let server;
 
