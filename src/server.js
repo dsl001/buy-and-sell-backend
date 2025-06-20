@@ -2,6 +2,9 @@ import Hapi from "@hapi/hapi";
 import * as admin from "firebase-admin";
 import routes from "./routes";
 import { db } from "./database";
+import { configDotenv } from "dotenv";
+
+configDotenv();
 import fs from "fs";
 import path from "path";
 
