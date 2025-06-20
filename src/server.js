@@ -11,6 +11,9 @@ const credentials = JSON.parse(fs.readFileSync(credentialsPath, "utf8"));
 admin.initializeApp({
   credential: admin.credential.cert(credentials),
 });
+import { configDotenv } from "dotenv";
+
+configDotenv();
 
 let server;
 
