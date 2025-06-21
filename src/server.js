@@ -1,4 +1,5 @@
 import Hapi from "@hapi/hapi";
+import inert from "@hapi/inert";
 import routes from "./routes";
 import { db } from "./database";
 import { configDotenv } from "dotenv";
@@ -12,6 +13,8 @@ const start = async () => {
     port: 8000,
     host: "localhost",
   });
+
+  await server.register(inert);
 
   routes.forEach((route) => server.route(route));
 
